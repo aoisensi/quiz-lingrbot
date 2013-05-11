@@ -95,7 +95,7 @@ post '/' do
 
       phrase = text[/^#quiz\s*(.+)/, 1]
       quiz_data = phrase ? quiz_from_phrase(phrase) : quiz_from_all
-      return '問題が見付かりませんでした。' unless quiz_data
+      return '#{quiz_data} の問題は見付かりませんでした。' unless quiz_data
       return '現在出題中です。' if quiz[room]
       quiz[room] = Quiz.new(quiz_data)
       time = 30
